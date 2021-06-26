@@ -17,6 +17,10 @@ export class ProductsListComponent {
   }
 
   addToCart(product: Product): void {
+    if (localStorage.getItem('cart')) {
+      this.cart = JSON.parse(localStorage.getItem('cart')!);
+    }
+
     this.cart.push(product);
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }

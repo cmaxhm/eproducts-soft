@@ -1,0 +1,55 @@
+<div class="row my-5">
+  <div class="col-12 mb-3">
+    <h2>Carrito</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-9">
+      <div class="row">
+        <div class="col-12 col-md-3 col-lg-2 mb-3" *ngFor="let product of cart">
+          <div class="card h-100">
+            <img src="{{ product.image }}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">${{ product.price }}</p>
+              <button type="button" class="btn btn-danger" (click)="removeProduct(product)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="alert alert-info" role="alert" *ngIf="cart.length === 0">
+            No hay productos en tu carrito
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <div class="d-grid gap-2">
+        <h3>Datos del pedido</h3>
+        <form [formGroup]="form">
+          <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <input formControlName="name" type="text" class="form-control">
+            <div class="form-text text-danger" *ngIf="!form.controls.name.valid && form.controls.name.touched">Este campo es obligatorio</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Teléfono:</label>
+            <input formControlName="phoneNumber" type="tel" class="form-control">
+            <div class="form-text text-danger" *ngIf="!form.controls.phoneNumber.valid && form.controls.phoneNumber.touched">Este campo es obligatorio</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Dirección:</label>
+            <input formControlName="address" type="tel" class="form-control">
+            <div class="form-text text-danger" *ngIf="!form.controls.address.valid && form.controls.address.touched">Este campo es obligatorio</div>
+          </div>
+        </form>
+
+        <h3>Total: $ {{ cartTotal }}</h3>
+        <hr>
+        <button type="button"
+                class="btn btn-primary"
+                [disabled]="!form.valid || cart.length === 0"
+                (click)="submitPurchase()">Hacer pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
