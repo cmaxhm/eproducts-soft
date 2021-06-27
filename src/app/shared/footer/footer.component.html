@@ -1,5 +1,20 @@
 <div class="row">
   <div class="col-12">
+    <div class="bg-grey">
+      <p>Si quieres recibir nuestras ofertas en tu correo, suscríbete a nuestro boletín:</p>
+      <div class="mb-3" *ngIf="!subscribed">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <label class="form-label">Email:</label>
+          <input type="email"
+                 class="form-control"
+                 formControlName="email"
+                 placeholder="Escribe tu correo y presiona (Enter)">
+        </form>
+      </div>
+      <div class="alert alert-success" *ngIf="subscribed">
+        Gracias por suscribirte!
+      </div>
+    </div>
     <hr>
     <div class="text-center">
       &copy; EProducts Soft - Colombia
