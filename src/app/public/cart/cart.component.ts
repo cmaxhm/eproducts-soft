@@ -15,6 +15,7 @@ export class CartComponent {
   public cart: Product[];
   public form: FormGroup;
   public cartTotal: number;
+  public purchased: boolean;
   private purchase?: Purchase;
   private purchases?: Purchase[];
 
@@ -22,6 +23,7 @@ export class CartComponent {
     this.user = {};
     this.cart = [];
     this.cartTotal = 0;
+    this.purchased = false;
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       phoneNumber: ['', Validators.required],
@@ -44,6 +46,7 @@ export class CartComponent {
   }
 
   submitPurchase(): void {
+    this.purchased = true;
     this.purchase = {
       user: this.form.value,
       cart: this.cart

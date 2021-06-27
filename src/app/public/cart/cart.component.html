@@ -19,6 +19,9 @@
           <div class="alert alert-info" role="alert" *ngIf="cart.length === 0">
             No hay productos en tu carrito
           </div>
+          <div class="alert alert-success" role="alert" *ngIf="cart.length === 0 && purchased === true">
+            Por favor haga el pago correspondiente a la cuenta XXX-XXXX-XXXX y al ser confirmada le enviaremos un correo sobre el despacho de sus productos.
+          </div>
         </div>
       </div>
     </div>
