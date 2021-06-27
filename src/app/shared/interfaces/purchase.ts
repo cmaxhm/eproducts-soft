@@ -3,5 +3,6 @@ import { Product } from "./product";
 
 export interface Purchase {
   user: User,
-  cart: Product[]
+  cart: Product[],
+  dispatchDate?: string
 }
